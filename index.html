@@ -1,9 +1,383 @@
-<html>
-  <head>
-    <title>HP Home</title>
-  </head>
-  <body>
-    <h1>my home</h1>
-    <p>empty...</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio North | Creative Digital Agency</title>
+  <meta name="description" content="A modern homepage for a creative digital agency." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101c2f;
+      --text: #f3f7ff;
+      --muted: #9fb0c7;
+      --accent: #76d7ff;
+      --accent-2: #8f7cff;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #07111f 0%, #0f1f35 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(118, 215, 255, 0.18), transparent 30%),
+        radial-gradient(circle at left center, rgba(143, 124, 255, 0.2), transparent 25%);
+      padding: 1.25rem 0 4rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      align-items: center;
+      min-height: calc(100vh - 90px);
+      padding: 2rem 0;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4.5vw, 4.2rem);
+      line-height: 1.08;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 0 2rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.9rem 1.4rem;
+      font-weight: 600;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #05101d;
+      background: linear-gradient(90deg, var(--accent), #d8f7ff);
+      box-shadow: 0 10px 30px rgba(118, 215, 255, 0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-alt {
+      background: rgba(255, 255, 255, 0.03);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.7rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .split h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .split p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.2rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 2.2rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(118, 215, 255, 0.14), rgba(143, 124, 255, 0.12));
+      border: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.8rem;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 800px) {
+      .cards,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links {
+        display: none;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#">Studio North</a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Design • Development • Strategy</p>
+          <h1>We build memorable digital experiences.</h1>
+          <p>
+            From bold brands to high-performing websites, we help ambitious companies grow their presence online with clarity and impact.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What we do</h2>
+          <p>Creative solutions tailored to help your business stand out and perform better.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Brand Identity</h3>
+            <p>Crafting visual systems and messaging that make your brand feel confident, modern, and memorable.</p>
+          </article>
+          <article class="card">
+            <h3>Web Development</h3>
+            <p>Building responsive, fast, and elegant websites designed to convert visitors into customers.</p>
+          </article>
+          <article class="card">
+            <h3>Growth Strategy</h3>
+            <p>Connecting your digital presence with measurable goals through smart planning and content.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="container split">
+        <div>
+          <h2>Designed for modern teams</h2>
+          <p>
+            We blend strategy, storytelling, and technology to create experiences that feel effortless and effective.
+          </p>
+          <p>
+            Whether you're launching a new venture or refreshing an established brand, we bring structure, creativity, and attention to detail.
+          </p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>120+</strong>
+            Projects launched
+          </div>
+          <div class="stat">
+            <strong>94%</strong>
+            Client retention
+          </div>
+          <div class="stat">
+            <strong>15</strong>
+            Countries served
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            Collaborative support
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta">
+          <h2>Ready to launch your next idea?</h2>
+          <p>Let’s create something remarkable together.</p>
+          <a class="btn btn-primary" href="mailto:hello@studionorth.com">hello@studionorth.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Studio North. All rights reserved.
+    </div>
+  </footer>
+</body>
 </html>
