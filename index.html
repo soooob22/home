@@ -4,31 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
-  <meta name="description" content="마인크래프트 감성의 깔끔한 자기소개 포트폴리오" />
+  <meta name="description" content="우주 감성의 세련된 자기소개 포트폴리오" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f6f2e9;
-      --panel: #fffdf8;
-      --ink: #2f2a24;
-      --muted: #6f675f;
-      --grass: #5f8f3f;
-      --dirt: #8d5a2b;
-      --border: #3e3a34;
-      --shadow: #c8b58d;
-      --soft: #e9dfc8;
+      --bg: #030611;
+      --panel: rgba(12, 17, 33, 0.86);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --text: #f6f7fb;
+      --muted: #aeb9cf;
+      --accent: #8cdcff;
+      --accent-2: #8a7dff;
+      --accent-3: #73f5a7;
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: rgba(0, 0, 0, 0.35);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Noto Sans KR", sans-serif;
-      color: var(--ink);
-      background: linear-gradient(180deg, #fcfbf7 0%, var(--bg) 100%);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(140, 220, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 80% 0%, rgba(138, 125, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(115, 245, 167, 0.12), transparent 24%),
+        linear-gradient(135deg, #02040b 0%, #050816 35%, #02040b 100%);
+      min-height: 100vh;
       line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.05), transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06), transparent 1.2px),
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.05), transparent 1px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.04), transparent 1.4px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.05), transparent 1.1px);
+      background-size: 220px 220px;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(ellipse at 40% 20%, rgba(255,255,255,0.08), transparent 30%),
+        radial-gradient(ellipse at 70% 70%, rgba(255,255,255,0.06), transparent 24%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.4); opacity: 1; }
     }
 
     a { color: inherit; text-decoration: none; }
@@ -42,14 +103,18 @@
 
     .block {
       background: var(--panel);
-      border: 4px solid var(--border);
-      box-shadow: 8px 8px 0 var(--shadow);
+      border: 1.5px solid var(--border);
+      box-shadow:
+        0 12px 40px var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,0.06);
       border-radius: 18px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .hero {
       padding: 32px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .profile {
@@ -62,16 +127,20 @@
     .avatar {
       width: 180px;
       height: 180px;
-      border: 4px solid var(--border);
-      background: linear-gradient(135deg, #d8d8d8 0%, #bfbfbf 100%);
+      border: 1.5px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)),
+        radial-gradient(circle at 30% 30%, rgba(140, 220, 255, 0.3), transparent 30%);
       display: grid;
       place-items: center;
-      color: #666;
-      font-size: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.15);
+      border-radius: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
 
     .pixel {
@@ -81,43 +150,46 @@
     }
 
     .name {
-      font-size: clamp(18px, 2.4vw, 28px);
+      font-size: clamp(18px, 2.3vw, 26px);
       margin: 0 0 12px;
-      color: var(--grass);
+      color: var(--accent);
     }
 
     .intro {
       margin: 0;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--muted);
       max-width: 620px;
     }
 
     section {
-      margin-top: 24px;
-      padding: 26px 28px;
+      margin-top: 20px;
+      padding: 24px 26px;
     }
 
     .section-title {
       font-family: "Press Start 2P", cursive;
-      font-size: 14px;
-      color: var(--dirt);
+      font-size: 12px;
+      color: var(--accent-2);
       margin: 0 0 16px;
+      letter-spacing: 0.04em;
     }
 
-    .chips {
+    .chips, .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .chip {
-      padding: 10px 14px;
-      border: 3px solid var(--border);
-      background: #f8f2dc;
+    .chip, .badge {
+      padding: 10px 13px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      color: var(--text);
       font-weight: 700;
-      font-size: 14px;
-      box-shadow: 4px 4px 0 var(--shadow);
+      font-size: 13px;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
     .projects {
@@ -131,21 +203,21 @@
       flex-direction: column;
       gap: 10px;
       padding: 18px;
-      border: 3px solid var(--border);
-      background: linear-gradient(180deg, #fffef8 0%, #f4ebd8 100%);
-      box-shadow: 5px 5px 0 var(--shadow);
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border-radius: 14px;
+      transition: transform 0.18s ease, border-color 0.2s ease;
     }
 
     .project-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0 var(--shadow);
+      transform: translateY(-2px);
+      border-color: rgba(140, 220, 255, 0.35);
     }
 
     .project-title {
       font-weight: 700;
-      font-size: 16px;
-      color: var(--grass);
+      font-size: 15px;
+      color: var(--accent-3);
     }
 
     .project-desc {
@@ -157,26 +229,10 @@
     .project-link {
       margin-top: auto;
       font-weight: 700;
-      color: var(--dirt);
+      color: var(--accent);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .badge {
-      padding: 10px 12px;
-      border: 3px solid var(--border);
-      background: linear-gradient(180deg, #f7f3e7 0%, #e8dcc3 100%);
-      font-weight: 700;
-      font-size: 13px;
-      box-shadow: 4px 4px 0 var(--shadow);
-      color: var(--ink);
     }
 
     .contact {
@@ -185,7 +241,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 24px 28px;
+      padding: 24px 26px;
     }
 
     .contact p {
@@ -203,28 +259,30 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 16px;
-      border: 3px solid var(--border);
-      background: linear-gradient(180deg, #f7f0dc 0%, #e7d9b7 100%);
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      color: var(--text);
       font-weight: 700;
-      box-shadow: 4px 4px 0 var(--shadow);
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform 0.18s ease, border-color 0.2s ease;
     }
 
     .btn:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--shadow);
+      transform: translateY(-2px);
+      border-color: rgba(140, 220, 255, 0.35);
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #90c96a 0%, #5f8f3f 100%);
-      color: #fff;
-      border-color: #3f642a;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #05111d;
+      border-color: transparent;
     }
 
     .footer {
       text-align: center;
-      padding: 24px 0 8px;
+      padding: 20px 0 6px;
       color: var(--muted);
       font-size: 13px;
     }
@@ -260,11 +318,11 @@
       }
 
       .name {
-        font-size: 20px;
+        font-size: 19px;
       }
 
       .pixel {
-        font-size: 12px;
+        font-size: 11px;
       }
 
       .chip, .badge {
@@ -274,6 +332,8 @@
   </style>
 </head>
 <body>
+  <div class="stars" id="stars"></div>
+
   <div class="page">
     <header class="hero block">
       <div class="profile">
@@ -342,6 +402,27 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const starsContainer = document.getElementById("stars");
+    const starCount = 90;
+
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement("span");
+      star.className = "star";
+      const size = Math.random() * 2.2 + 0.8;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const delay = Math.random() * 3;
+      const duration = Math.random() * 2.5 + 2.2;
+
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${x}%`;
+      star.style.top = `${y}%`;
+      star.style.animationDelay = `${delay}s`;
+      star.style.animationDuration = `${duration}s`;
+      starsContainer.appendChild(star);
+    }
   </script>
 </body>
 </html>
